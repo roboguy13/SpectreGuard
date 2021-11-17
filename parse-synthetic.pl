@@ -6,12 +6,12 @@ use warnings;
 my @bench_names = ('25S/75C', '50S/50C', '75S/25C', '90S/10C');
 # my @configs = ('Native', 'InvisiSpec', 'Fence', 'SG-Key', 'SG-All' );
 # my @configs = ('Native', 'InvisiSpec', 'SG-Key', 'SG-All' );
-my @configs = ('Native', 'InvisiSpec', 'Fence', 'SG-Encrypt-Out', 'SG-Intermediate', 'SG-All' );
+my @configs = ('Native', 'InvisiSpec', 'Fence', 'SG-Output', 'SG-Intermediate', 'SG-All' );
 my %configs_display_name = (
     Native        => 'Native',
     InvisiSpec    => 'InvisiSpec',
     Fence         => 'Fence',
-    'SG-Encrypt-Out'      => 'SG(Encrypt-Out)',
+    'SG-Output'      => 'SG(Output)',
     'SG-Intermediate' => 'SG(Intermediate)',
     'SG-All'      => 'SG(All)',
 );

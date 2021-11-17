@@ -35,7 +35,7 @@ foreach my $bench (
     { name => 'Native',          scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '0', script => 'specBench_base',    kernel => 'vmlinux' },
     { name => 'InvisiSpec',      scheme => 'SpectreSafeInvisibleSpec', SG_all => '0', SG_opt => '0', script => 'specBench_base',    kernel => 'vmlinux' },
     { name => 'Fence',           scheme => 'SpectreSafeFence',         SG_all => '0', SG_opt => '0', script => 'specBench_base',    kernel => 'vmlinux' },
-    { name => 'SG-Encrypt-Out',  scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '1', script => 'specBench_out_protected',    kernel => 'vmlinux' },
+    { name => 'SG-Output',  scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '1', script => 'specBench_out_protected',    kernel => 'vmlinux' },
     { name => 'SG-Intermediate', scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '1', script => 'specBench_inter',    kernel => 'vmlinux' },
     { name => 'SG-All',          scheme => 'UnsafeBaseline',           SG_all => '1', SG_opt => '1', script => 'specBench_base',    kernel => 'vmlinux' },
     { name => 'Attack_Test',     scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '1', script => 'spectre_attack',    kernel => 'vmlinux' },
