@@ -35,13 +35,14 @@ foreach my $bench (
     { name => 'Native',          scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '0', script => 'specBench_base',    kernel => 'vmlinux' },
     { name => 'InvisiSpec',      scheme => 'SpectreSafeInvisibleSpec', SG_all => '0', SG_opt => '0', script => 'specBench_base',    kernel => 'vmlinux' },
     { name => 'Fence',           scheme => 'SpectreSafeFence',         SG_all => '0', SG_opt => '0', script => 'specBench_base',    kernel => 'vmlinux' },
-    { name => 'SG-Key',          scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '1', script => 'specBench_wbor',    kernel => 'vmlinux' },
+    { name => 'SG-Encrypt-Out',  scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '1', script => 'specBench_out_protected',    kernel => 'vmlinux' },
+    { name => 'SG-Intermediate', scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '1', script => 'specBench_inter',    kernel => 'vmlinux' },
     { name => 'SG-All',          scheme => 'UnsafeBaseline',           SG_all => '1', SG_opt => '1', script => 'specBench_base',    kernel => 'vmlinux' },
     { name => 'Attack_Test',     scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '1', script => 'spectre_attack',    kernel => 'vmlinux' },
     { name => 'Attack_Test_Mit', scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '1', script => 'spectre_attack_mit',kernel => 'vmlinux' },
-    { name => 'Mark_Test',       scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '0', script => 'markTest',          kernel => 'vmlinux' },
-    { name => 'Mark_Test_All',   scheme => 'UnsafeBaseline',           SG_all => '1', SG_opt => '0', script => 'markTest',          kernel => 'vmlinux' },
-    { name => 'Mark_Test_Heap',  scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '0', script => 'markTest',          kernel => 'vmlinux_SG_heap' },
+    # { name => 'Mark_Test',       scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '0', script => 'markTest',          kernel => 'vmlinux' },
+    # { name => 'Mark_Test_All',   scheme => 'UnsafeBaseline',           SG_all => '1', SG_opt => '0', script => 'markTest',          kernel => 'vmlinux' },
+    # { name => 'Mark_Test_Heap',  scheme => 'UnsafeBaseline',           SG_all => '0', SG_opt => '0', script => 'markTest',          kernel => 'vmlinux_SG_heap' },
 )
 {
     my $name   = $bench->{'name'};

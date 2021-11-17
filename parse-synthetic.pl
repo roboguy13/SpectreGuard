@@ -4,12 +4,15 @@ use strict;
 use warnings;
 
 my @bench_names = ('25S/75C', '50S/50C', '75S/25C', '90S/10C');
-my @configs = ('Native', 'InvisiSpec', 'Fence', 'SG-Key', 'SG-All' );
+# my @configs = ('Native', 'InvisiSpec', 'Fence', 'SG-Key', 'SG-All' );
+# my @configs = ('Native', 'InvisiSpec', 'SG-Key', 'SG-All' );
+my @configs = ('Native', 'InvisiSpec', 'Fence', 'SG-Encrypt-Out', 'SG-Intermediate', 'SG-All' );
 my %configs_display_name = (
     Native        => 'Native',
     InvisiSpec    => 'InvisiSpec',
     Fence         => 'Fence',
-    'SG-Key'      => 'SG(Key)',
+    'SG-Encrypt-Out'      => 'SG(Encrypt-Out)',
+    'SG-Intermediate' => 'SG(Intermediate)',
     'SG-All'      => 'SG(All)',
 );
 
@@ -57,8 +60,10 @@ foreach my $bench (@bench_names)
     printf $spec_perf_handle_dat "$bench\t";
     foreach my $config ( @configs )
     {
-        my $norm_time = $all_benches{$config}{$bench}{sim_seconds} / $all_benches{Native}{$bench}{sim_seconds};
-        printf $spec_perf_handle_dat "%.3f\t", $norm_time;
+	    my $norm_time = $all_benches{$config}{$bench}{sim_seconds} / $all_benches{Native}{$bench}{sim_seconds};
+	    # my $norm_time = $all_benches{$config}{$bench}{sim_seconds} / $all_benches{'SG-All'}{$bench}{sim_seconds};
+	    # my $the_time = $all_benches{$config}{$bench}{sim_seconds};
+        printf $spec_perf_handle_dat "%.3f\t", $norm_time; # $the_time;
     }
     printf $spec_perf_handle_dat "\n";
 }

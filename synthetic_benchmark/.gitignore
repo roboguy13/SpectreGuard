@@ -3,6 +3,8 @@ aes_core.o
 specBench_base
 specBench_mask
 specBench_wbor
+specBench_inter
+specBench_out_protected
 stack_test
 markTest
 spectre_attack

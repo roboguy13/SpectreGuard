@@ -1,6 +1,7 @@
 x86-system.tar.gz
 x86-system
 artifacts
+artifacts.*
 *.log
 max_tasks.txt
 m5out
