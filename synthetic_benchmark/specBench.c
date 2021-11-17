@@ -476,6 +476,8 @@ u32 t2 SPEC_ANN;
 u32 t3 SPEC_ANN;
 
 char cipher_buf[4096] SPEC_ANN_OUTPUT;
+char checksum1 SPEC_ANN_OUTPUT;
+char checksum2 SPEC_ANN_OUTPUT;
 
 /*  The value of the secret key stored in the binary. We do not suggest
     storing secrets in binaries, this is just used to show how to mark 
@@ -498,7 +500,6 @@ int main( int argc, char ** argv )
     AES_KEY * my_aes_key;
     
 
-    char checksum1, checksum2;
     
     // parse user input
     if( argc != 2 )
@@ -768,7 +769,8 @@ int main( int argc, char ** argv )
             // Compute checksum
             for (int j = 0; j < 16; ++j)
             {
-              if (((i*16) + j) % 2 == 0)
+              /* if (((i*16) + j) % 2 == 0) */
+              if (cipher_buf[j] % 2)
               {
                 checksum1 ^= cipher_buf[(i*16) + j];
               }
