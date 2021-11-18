@@ -12,7 +12,7 @@ all:
 	./gen_link_script.pl specBench_inter specBench_inter.lds
 	gcc -Wall -g -DWB_ON_RETIRE -static -O2 -Iinclude -T specBench_inter.lds -o specBench_inter specBench.c aes_core.o
 	#
-	## Generate the benchmark without the key protected
+	## Generate the benchmark without SG annotation protections
 	gcc -Wall -g -static -O2 -Iinclude -o specBench_base specBench.c aes_core.o
 	./gen_link_script.pl specBench_base specBench_base.lds
 	gcc -Wall -g -static -O2 -Iinclude -T specBench_base.lds -o specBench_base specBench.c aes_core.o

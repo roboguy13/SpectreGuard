@@ -456,7 +456,7 @@ static const u32 Te3[256] = {
 #ifdef FULL_SG_PROTECT
 #  define SPEC_ANN_OUTPUT __attribute__((section(".non-speculative")))
 #else
-#  define SPEC_ANN_OUTPUT
+#  define SPEC_ANN_OUTPUT __attribute__((section(".data")))
 #endif
 
     /* u32 s0_ SPEC_ANN; */
@@ -476,8 +476,11 @@ u32 t2 SPEC_ANN;
 u32 t3 SPEC_ANN;
 
 char cipher_buf[4096] SPEC_ANN_OUTPUT;
-char checksum1 SPEC_ANN_OUTPUT;
-char checksum2 SPEC_ANN_OUTPUT;
+char cipher_copy1[4096] SPEC_ANN_OUTPUT;
+char cipher_copy2[4096] SPEC_ANN_OUTPUT;
+/* char checksum1 SPEC_ANN_OUTPUT; */
+/* char checksum2 SPEC_ANN_OUTPUT; */
+/* unsigned char sum SPEC_ANN_OUTPUT = 0; */
 
 /*  The value of the secret key stored in the binary. We do not suggest
     storing secrets in binaries, this is just used to show how to mark 
@@ -555,8 +558,8 @@ int main( int argc, char ** argv )
     
     for( k = 0; k < 100; k++ )
     {
-        checksum1 = 0;
-        checksum2 = 0;
+        /* checksum1 = 0; */
+        /* checksum2 = 0; */
         time1 = __rdtscp( & junk);
         time1 = __rdtscp( & junk);
         for( j = 0; j < work_loop; j++ )
@@ -766,20 +769,12 @@ int main( int argc, char ** argv )
             }
 
 
-            // Compute checksum
-            for (int j = 0; j < 16; ++j)
-            {
-              /* if (((i*16) + j) % 2 == 0) */
-              if (cipher_buf[j] % 2)
-              {
-                checksum1 ^= cipher_buf[(i*16) + j];
-              }
-              else
-              {
-                checksum2 ^= cipher_buf[(i*16) + j];
-              }
-            }
         }
+
+        // Copy encrypted result
+        memcpy(cipher_copy1, cipher_buf, 4096);
+        memcpy(cipher_copy2, cipher_buf, 4096);
+
         time2 = __rdtscp( & junk) - time1;
         time2 = __rdtscp( & junk) - time1;
         time_encrypt += time2;
