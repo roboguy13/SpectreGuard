@@ -63,8 +63,8 @@ foreach my $bench (@bench_names)
 	    my $norm_time = $all_benches{$config}{$bench}{sim_seconds} / $all_benches{Native}{$bench}{sim_seconds};
 	    # my $norm_time = $all_benches{$config}{$bench}{sim_seconds} / $all_benches{'SG-All'}{$bench}{sim_seconds};
 
-	    # my $the_time = $norm_time;
-	    my $the_time = $all_benches{$config}{$bench}{sim_seconds};
+	    my $the_time = $norm_time;
+	    # my $the_time = $all_benches{$config}{$bench}{sim_seconds};
         printf $spec_perf_handle_dat "%.3f\t", $the_time;
     }
     printf $spec_perf_handle_dat "\n";
