@@ -23,6 +23,7 @@ set style line 3 lt rgb "#000080" lw 2 pt 2
 # set style line 4 lt rgb "#0000a0" lw 2 pt 9
 
 # set yrange [0:3.5]
+set yrange [0:]
 
 # set xtics nomirror rotate by -40 # scale 0 font ",24"
 # set ylabel "Absolute Execution Time" offset 2
