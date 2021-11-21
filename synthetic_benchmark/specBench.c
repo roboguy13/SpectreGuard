@@ -516,25 +516,25 @@ int main( int argc, char ** argv )
     
     if( !strcmp(argv[1], "75") )
     {
-      hash_loop = 1 << 10;
+      hash_loop = 1 << 11;
         /* work_loop = 2048; */
         /* crypto_loop = 100; */
     }
     else if( !strcmp(argv[1], "50") )
     {
-      hash_loop = 1 << 11;
+      hash_loop = 1 << 12;
         /* work_loop = 8192; */
         /* crypto_loop = 100; */
     }
     else if( !strcmp(argv[1], "25") )
     {
-      hash_loop = 1 << 12;
+      hash_loop = 1 << 13;
         /* work_loop = 8192; */
         /* crypto_loop = 40; */
     }
     else if( !strcmp(argv[1], "10") )
     {
-      hash_loop = 1 << 13;
+      hash_loop = 1 << 14;
         /* work_loop = 8192; */
         /* crypto_loop = 15; */
 
@@ -794,10 +794,10 @@ int main( int argc, char ** argv )
                 r = cipher_buf[i%4096];
               }
 
-              recipher[i%2048] &= r;
-              recipher[i%2048 + 1] &= r;
-              recipher[i%2048 + 2] &= r;
-              recipher[i%2048 + 3] &= r;
+              recipher[i%2048] ^= r;
+              recipher[i%2048 + 1] ^= r;
+              recipher[i%2048 + 2] ^= r;
+              recipher[i%2048 + 3] ^= r;
 
               if (r % 2) {
                 cipher_copy2[i%2048] ^= r;

@@ -23,19 +23,22 @@ set style line 3 lt rgb "#000080" lw 2 pt 2
 # set style line 4 lt rgb "#0000a0" lw 2 pt 9
 
 # set yrange [0:3.5]
-set yrange [0:]
+# set yrange [0:2.0]
 
 # set xtics nomirror rotate by -40 # scale 0 font ",24"
 # set ylabel "Absolute Execution Time" offset 2
 set ylabel "Normalized Execution Time" offset 2
 set style data histogram
 
+set xlabel "Checksum Iterations" offset 1
+
 # set key at 0.5,3.3
 # set key samplen 1 width 2
 # set key autotitle columnhead
 
 # set key default
-set key autotitle columnhead
+# set key autotitle columnhead
+set key autotitle columnhead font ",10" #outside font ",8"
 
 set boxwidth 1
 set arrow from -1,1 to 4,1 nohead lt 2
@@ -52,7 +55,7 @@ set style fill pattern
 plot  "artifacts/graphs/synthetic/synthetic-perf.dat" using 2:xticlabel(1) fs pattern 0 lt -1,\
        ''          using  5:xticlabel(1) fs pattern 1 lt -1,\
        ''          using  6:xticlabel(1) fs pattern 2 lt -1,\
-       ''          using  7:xticlabel(1) fs pattern 4 lt -1,\
-       ''          using  3:xticlabel(1) fs pattern 3 lt -1,
+       ''          using  7:xticlabel(1) fs pattern 4 lt -1,
+       # ''          using  3:xticlabel(1) fs pattern 3 lt -1,
        # ''          using  4:xticlabel(1) fs pattern 4 lt -1,\
        # ''          using  4:xticlabel(1) fs pattern 5 lt -1
